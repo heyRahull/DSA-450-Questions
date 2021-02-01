@@ -1,4 +1,4 @@
-Maximum and Minimum Of Array Elements 
+/*Maximum and Minimum Of Array Elements 
 School Accuracy: 49.96% Submissions: 18457 Points: 0
 Given an array A[ ], find maximum and minimum elements from the array.
 
@@ -29,8 +29,12 @@ Explanation:
 Testcase 1:
 Maximum element is: 5 
 Minimum element is: 1
+*/
 
 Solution :
+
+APPROACH 1:-(COMPARISON LINEARLY WITH EACH ELEMENT)
+	
 #include <iostream>
 using namespace std;
 
@@ -87,3 +91,72 @@ int main() {
 	    cout<<endl;
 	    }
 	}
+
+APPROACH 2 :-(cOMPARISONS IN PAIRS)
+	
+#include <iostream>
+using namespace std;
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	 int n;
+	 cin>>n;
+	 int arr[n];
+	 int min;
+	 int max;
+	 int i;
+	 
+	 for(int i=0;i<n;i++)
+	 {
+	  cin>>arr[i];   
+	 }
+	 
+	 if(n%2!=0)
+	 {
+	     min=arr[0];
+	     max=arr[0];
+	     i=1;
+	 }
+	 else
+	 {
+	     if(arr[0]>arr[1])
+	    {
+	      max=arr[0];
+	      min=arr[1];
+	    }
+	    else
+	    {
+	        max=arr[1];
+	        min=arr[0];
+	    }
+	    i=2;
+	 }
+	 
+	 while(i<n)
+	 {
+	     if(arr[i]<arr[i+1])
+	     {
+	      if(arr[i]<min)
+	      min=arr[i];
+	      if(arr[i+1]>max)
+	      max=arr[i+1];
+	     }
+	     else
+	     {
+	         if(arr[i]>max)
+	         max=arr[i];
+	         if(arr[i+1]<min)
+	         min=arr[i+1];
+	     }
+	     i+=2;
+	 }
+	 
+	 cout<<max<<" ";
+	 cout<<min;
+	 cout<<endl;
+	}
+}
